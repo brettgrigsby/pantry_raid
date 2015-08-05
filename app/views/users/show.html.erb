@@ -1,20 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
-      <img class="img-circle img-responsive" src="http://orig06.deviantart.net/d36c/f/2014/088/2/c/_tips_fedora__by_gabplaza-d7c64yc.png"><br>
-      <a class="btn btn-lg btn-info">My Pantry</a>
+    <div class="col-md-4 text-center">
+      <img class="img-circle img-responsive center-block" src="http://orig06.deviantart.net/d36c/f/2014/088/2/c/_tips_fedora__by_gabplaza-d7c64yc.png"><br>
+      <a href="#" class="btn btn-lg btn-info">My Pantry</a>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
       <h1 class="text-right">This Week's Menu</h1>
-      <div class="panel calander">
-        <h3>Mon</h3>
-        <h3>Tue</h3>
-        <h3>Wed</h3>
-        <h3>Thu</h3>
-        <h3>Fri</h3>
-        <h3>Sat</h3>
-        <h3>Sun</h3>
-      </div>
+      <% @days.each do |day| %>
+        <div class="panel calander-day">
+          <div class="col-md-2 col-xs-3 text-center">
+            <h3><%= day.strftime("%^a") %></h3>
+            <h4><%= day.strftime("%d") %><h4>
+          </div>
+          <div class="col-md-10 calander-day">
+            <a href="#" class="btn btn-lg btn-success recipie">A Thing</a>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
