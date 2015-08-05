@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get '/profile', to: 'users#show'
+  get '/pantry', to: 'pantries#show'
 
   resources :recipes, only: [:show, :index]
 

@@ -1,1 +1,25 @@
-<h1><%= @recipe.name %></h1>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-12'>
+      <h1><%= @recipe.name %></h1>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-3'>
+      <div class='panel'>
+        <ul>
+        <% @recipe.recipe_ingredients.each do |ri| %>
+          <li><h3><%= ri.ingredient.name %><h3><h4><%= ri.quantity %> <%= ri.ingredient.quantity_type %> <%= ri.prep_method %></h4></li>
+        <% end %>
+      </div>
+    </div>
+
+    <div class='col-md-9'>
+      <% @recipe.recipe_steps.each do |rs| %>
+        <div class='panel recipe-step'>
+          <div class='col-md-12'><h4><%= rs.body %></h4></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

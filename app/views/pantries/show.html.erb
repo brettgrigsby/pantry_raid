@@ -1,0 +1,16 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-12'><h1>My Pantry</h1></div>
+  </div>
+
+  <div class='row'>
+    <div class='col-md-12'>
+      <% current_user.pantry.pantry_ingredients.each do |pi| %>
+        <div class='pantry-ingredient panel col-md-3'>
+          <h1><%= pi.ingredient.name %></h1>
+          <h3><%= pi.quantity %> <%= pi.ingredient.quantity_type %></h3>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

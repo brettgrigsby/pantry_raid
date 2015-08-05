@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805043838) do
+ActiveRecord::Schema.define(version: 20150805200842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "quantity_type"
+  end
 
   create_table "menu_recipes", force: :cascade do |t|
     t.integer  "menu_id"
@@ -35,11 +42,53 @@ ActiveRecord::Schema.define(version: 20150805043838) do
 
   add_index "menus", ["user_id"], name: "index_menus_on_user_id", using: :btree
 
-  create_table "recipes", force: :cascade do |t|
-    t.string   "name"
+  create_table "pantries", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  add_index "pantries", ["user_id"], name: "index_pantries_on_user_id", using: :btree
+
+  create_table "pantry_ingredients", force: :cascade do |t|
+    t.integer  "pantry_id"
+    t.integer  "ingredient_id"
+    t.integer  "quantity"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "pantry_ingredients", ["ingredient_id"], name: "index_pantry_ingredients_on_ingredient_id", using: :btree
+  add_index "pantry_ingredients", ["pantry_id"], name: "index_pantry_ingredients_on_pantry_id", using: :btree
+
+  create_table "recipe_ingredients", force: :cascade do |t|
+    t.integer  "recipe_id"
+    t.integer  "ingredient_id"
+    t.integer  "quantity"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "prep_method"
+  end
+
+  add_index "recipe_ingredients", ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id", using: :btree
+  add_index "recipe_ingredients", ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id", using: :btree
+
+  create_table "recipe_steps", force: :cascade do |t|
+    t.integer  "step_number"
+    t.string   "body"
+    t.integer  "recipe_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "recipe_steps", ["recipe_id"], name: "index_recipe_steps_on_recipe_id", using: :btree
+
+  create_table "recipes", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "description"
   end
 
   add_index "recipes", ["user_id"], name: "index_recipes_on_user_id", using: :btree
@@ -57,5 +106,11 @@ ActiveRecord::Schema.define(version: 20150805043838) do
   add_foreign_key "menu_recipes", "menus"
   add_foreign_key "menu_recipes", "recipes"
   add_foreign_key "menus", "users"
+  add_foreign_key "pantries", "users"
+  add_foreign_key "pantry_ingredients", "ingredients"
+  add_foreign_key "pantry_ingredients", "pantries"
+  add_foreign_key "recipe_ingredients", "ingredients"
+  add_foreign_key "recipe_ingredients", "recipes"
+  add_foreign_key "recipe_steps", "recipes"
   add_foreign_key "recipes", "users"
 end

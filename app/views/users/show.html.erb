@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-4 text-center">
       <img class="img-circle img-responsive center-block profile-pic" src="<%= current_user.image_url %>"><br>
-      <a href="#" class="btn btn-lg btn-info">My Pantry</a>
+      <%= link_to 'My Pantry', pantry_path , class: 'btn btn-lg btn-info' %>
     </div>
     <div class="col-md-8">
       <h1 class="text-right">This Week's Menu</h1>
