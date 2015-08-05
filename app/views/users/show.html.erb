@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4 text-center">
-      <img class="img-circle img-responsive center-block" src="http://orig06.deviantart.net/d36c/f/2014/088/2/c/_tips_fedora__by_gabplaza-d7c64yc.png"><br>
+      <img class="img-circle img-responsive center-block profile-pic" src="<%= current_user.image_url %>"><br>
       <a href="#" class="btn btn-lg btn-info">My Pantry</a>
     </div>
     <div class="col-md-8">
@@ -12,8 +12,10 @@
             <h3><%= day.strftime("%^a") %></h3>
             <h4><%= day.strftime("%d") %><h4>
           </div>
-          <div class="col-md-10 calander-day">
-            <a href="#" class="btn btn-lg btn-success recipie">A Thing</a>
+          <div class="col-md-10">
+            <% current_user.menu.recipes_for_date(day).each do |recipe| %> 
+              <a href="<%= recipe_path(recipe) %>" class="btn btn-lg btn-success recipe"><%= recipe.name %></a>
+            <% end %>
           </div>
         </div>
       <% end %>
