@@ -1,3 +1,5 @@
 <% @recipes.each do |recipe| %>
-  <h1><%= recipe.name %></h1>
+  <h1><%= link_to recipe.name, recipe %></h1>
 <% end %>
+
+<%= link_to 'CREATE A RECIPE', new_recipe_path, class: 'btn btn-lg btn-default' %>

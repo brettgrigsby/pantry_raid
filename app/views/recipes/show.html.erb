@@ -12,6 +12,11 @@
           <li><h3><%= ri.ingredient.name %><h3><h4><%= ri.quantity %> <%= ri.ingredient.quantity_type %> <%= ri.prep_method %></h4></li>
         <% end %>
       </div>
+      <div class="text-center">
+        <% if @recipe.user == current_user %>
+          <%= link_to 'EDIT RECIPE', edit_recipe_path(@recipe), class: 'btn btn-lg btn-default' %>
+        <% end %>
+      </div>
     </div>
 
     <div class='col-md-9'>

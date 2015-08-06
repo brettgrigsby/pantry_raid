@@ -6,9 +6,9 @@
   <div class='row'>
     <div class='col-md-12'>
       <% current_user.pantry.pantry_ingredients.each do |pi| %>
-        <div class='pantry-ingredient panel col-md-3'>
-          <h1><%= pi.ingredient.name %></h1>
-          <h3><%= pi.quantity %> <%= pi.ingredient.quantity_type %></h3>
+        <div class='pantry-ingredient panel col-xs-4 col-sm-2'>
+          <h2><%= pi.ingredient.name %></h2>
+          <h4><%= pi.quantity %> <%= pi.ingredient.quantity_type %></h4>
         </div>
       <% end %>
     </div>
