@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
     unless user.menu
       Menu.create(user_id: user.id)
     end
+    unless user.pantry
+      Pantry.create(user_id: user.id)
+    end
     user
   end
 

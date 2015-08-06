@@ -1,8 +1,25 @@
-<%= form_for [@recipe, @recipe_step] do |f| %>
-  <%= f.label :body %>
-  <%= f.text_field :body %>
+<div class="container">
+  <div class="row">
+    <%= form_for [@recipe, @recipe_step] do |f| %>
+      <%= f.label :body %>
+      <%= f.text_field :body %>
 
-  <%= f.submit 'Add This Step' %>
-<% end %>
+      <%= f.submit 'Add This Step' %>
+    <% end %>
 
-<%= link_to 'ALL DONE', @recipe, class: 'btn btn-lg btn-default' %>
+    <%= link_to 'ALL DONE', @recipe, class: 'btn btn-lg btn-default' %>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <% @recipe.recipe_steps.each do |rs| %>
+      <div class="col-xs-12">
+        <div class="panel">
+          <h1><%= rs.step_number %>.</h1>
+          <h4><%= rs.body %></h4>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
