@@ -2,7 +2,11 @@
   <div class="row">
     <div class="col-md-4 text-center">
       <img class="img-circle img-responsive center-block profile-pic" src="<%= current_user.image_url %>"><br>
-      <%= link_to 'My Pantry', pantry_path , class: 'btn btn-lg btn-default', id: 'pantry-link' %>
+      <div class="btn-group-vertical" role="group">
+        <%= link_to 'My Pantry', pantry_path , class: 'btn btn-lg btn-default', id: 'pantry-link' %>
+        <%= link_to 'Add Recipies', recipes_path , class: 'btn btn-lg btn-default', id: 'pantry-link' %>
+        <%= link_to 'New Recipe', new_recipe_path , class: 'btn btn-lg btn-default', id: 'pantry-link' %>
+      </div>
     </div>
     <div class="col-md-8">
       <h1 class="text-center">This Week's Menu</h1>

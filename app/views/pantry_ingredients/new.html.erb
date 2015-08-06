@@ -1,0 +1,9 @@
+<%= form_for @pantry_ingredient do |f| %>
+  <%= f.collection_select :ingredient_id, Ingredient.order(:name), :id, :form_text, include_blank: true %>
+
+  <%= f.label :quantity %>
+  <%= f.text_field :quantity %>
+
+  <%= f.submit 'Add This Ingredient' %>
+<% end %>
+

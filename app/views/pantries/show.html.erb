@@ -1,13 +1,18 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-12'><h1>My Pantry</h1></div>
+    <div class='col-md-12'>
+      <h1>My Pantry</h1>
+      <%= link_to 'ADD INGREDIENTS TO MY PANTRY', new_pantry_ingredient_path, class: 'btn btn-lg btn-default' %>
+    </div>
   </div>
+
+  <hr>
 
   <div class='row'>
     <div class='col-md-12'>
       <% current_user.pantry.pantry_ingredients.each do |pi| %>
         <div class='pantry-ingredient panel col-xs-4 col-sm-2'>
-          <h2><%= pi.ingredient.name %></h2>
+          <h3><%= pi.ingredient.name %></h3>
           <h4><%= pi.quantity %> <%= pi.ingredient.quantity_type %></h4>
         </div>
       <% end %>

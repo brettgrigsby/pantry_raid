@@ -21,7 +21,8 @@
 
     <div class='col-md-9'>
       <% @recipe.recipe_steps.each do |rs| %>
-        <div class='panel recipe-step'>
+        <div class="col-md-1"><h1><%= rs.step_number %></h1></div>
+        <div class='col-md-11 panel recipe-step'>
           <h4><%= rs.body %></h4>
         </div>
       <% end %>
