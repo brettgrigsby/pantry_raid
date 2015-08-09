@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :recipes, only: [:show, :index, :new, :create, :edit] do
     resources :recipe_steps, only: [:new, :create]
     resources :recipe_ingredients, only: [:new, :create]
+    resources :menu_recipes, only: [:new, :create, :destroy]
   end
+
 
 
   get '/auth/facebook/callback', to: 'sessions#create'

@@ -13,6 +13,7 @@
         <% end %>
       </div>
       <div class="text-center">
+        <%= link_to 'ADD TO MENU', new_recipe_menu_recipe_path(@recipe), class: 'btn btn-lg btn-default'%>
         <% if @recipe.user == current_user %>
           <%= link_to 'EDIT RECIPE', edit_recipe_path(@recipe), class: 'btn btn-lg btn-default' %>
         <% end %>

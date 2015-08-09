@@ -4,8 +4,8 @@
       <img class="img-circle img-responsive center-block profile-pic" src="<%= current_user.image_url %>"><br>
       <div class="btn-group-vertical" role="group">
         <%= link_to 'My Pantry', pantry_path , class: 'btn btn-lg btn-default', id: 'pantry-link' %>
-        <%= link_to 'Add Recipies', recipes_path , class: 'btn btn-lg btn-default', id: 'pantry-link' %>
-        <%= link_to 'New Recipe', new_recipe_path , class: 'btn btn-lg btn-default', id: 'pantry-link' %>
+        <%= link_to 'Add Meals To Your Menu', recipes_path , class: 'btn btn-lg btn-default', id: 'pantry-link' %>
+        <%= link_to 'Create A Recipe', new_recipe_path , class: 'btn btn-lg btn-default', id: 'pantry-link' %>
       </div>
     </div>
     <div class="col-md-8">
@@ -17,8 +17,11 @@
             <h4><%= day.strftime("%d") %><h4>
           </div>
           <div class="col-md-10">
-            <% current_user.menu.recipes_for_date(day).each do |recipe| %> 
-              <a href="<%= recipe_path(recipe) %>" class="btn btn-lg btn-info recipe"><%= recipe.name %></a>
+            <% current_user.menu.menu_recipes_for_date(day).each do |menu_recipe| %> 
+              <div class="btn-group-vertical" role="group">
+                <%= link_to menu_recipe.recipe.name, menu_recipe.recipe, class: 'btn btn-lg btn-info recipe' %>
+                <%= link_to 'remove', recipe_menu_recipe_path(menu_recipe.recipe, menu_recipe), method: :delete , class: 'btn btn-sm btn-warning'%>
+              </div>
             <% end %>
           </div>
         </div>

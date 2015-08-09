@@ -7,9 +7,11 @@
 
   <div class="row">
     <% @recipes.each do |recipe| %>
-      <div class="col-sm-3 panel text-center recipe-box">
-        <h1><%= link_to recipe.name, recipe %></h1>
-        <%= link_to 'ADD TO MENU', '#', class: 'btn btn-lg btn-info' %>
+      <div class="col-sm-3 text-center">
+        <div class="panel recipe-box">
+          <h1><%= link_to recipe.name, recipe %></h1>
+          <%= link_to 'ADD TO MENU', new_recipe_menu_recipe_path(recipe), class: 'btn btn-lg btn-info' %>
+        </div>
       </div>
     <% end %>
   </div>
