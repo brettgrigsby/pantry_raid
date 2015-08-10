@@ -2,10 +2,23 @@
   <div class='row'>
     <div class='col-md-12'>
       <h1>My Pantry</h1>
-      <%= link_to 'ADD INGREDIENTS TO MY PANTRY', new_pantry_ingredient_path, class: 'btn btn-lg btn-default' %>
     </div>
   </div>
+  <hr>
 
+  <div class='row'>
+    <div class='text-align-center col-xs-12'>
+    <%= form_for @pantry_ingredient do |f| %>
+      <%= f.label :ingredient_id, 'Ingredient To Add' %>
+      <%= f.collection_select :ingredient_id, Ingredient.order(:name), :id, :form_text, include_blank: true %>
+
+      <%= f.label :quantity %>
+      <%= f.text_field :quantity %>
+
+      <%= f.submit 'Add To Pantry' %>
+    <% end %>
+    </div>
+  </div>
   <hr>
 
   <div class='row'>

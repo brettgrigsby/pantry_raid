@@ -8,7 +8,7 @@ class PantryIngredientsController < ApplicationController
     pantry_ingredient = PantryIngredient.new(pantry_ingredient_params)
     pantry_ingredient.pantry = pantry
     if pantry_ingredient.save
-      redirect_to new_pantry_ingredient_path
+      redirect_to pantry_path
     else
       render :new
     end

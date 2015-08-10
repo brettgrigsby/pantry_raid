@@ -1,9 +1,14 @@
-<%= form_for @pantry_ingredient do |f| %>
-  <%= f.collection_select :ingredient_id, Ingredient.order(:name), :id, :form_text, include_blank: true %>
+<div class='container'>
+  <div class='row'>
+    <%= form_for @pantry_ingredient do |f| %>
+      <%= f.label :ingredient_id, 'Ingredient' %>
+      <%= f.collection_select :ingredient_id, Ingredient.order(:name), :id, :form_text, include_blank: true %>
 
-  <%= f.label :quantity %>
-  <%= f.text_field :quantity %>
+      <%= f.label :quantity %>
+      <%= f.text_field :quantity %><br>
 
-  <%= f.submit 'Add This Ingredient' %>
-<% end %>
-
+      <%= f.submit 'Add This Ingredient' %>
+    <% end %>
+    <%= link_to 'BACK TO PANTRY', pantry_path, class: 'btn btn-lg btn-info' %>
+  </div>
+</div>

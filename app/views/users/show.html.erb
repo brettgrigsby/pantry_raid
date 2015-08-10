@@ -7,6 +7,15 @@
         <%= link_to 'Add Meals To Your Menu', recipes_path , class: 'btn btn-lg btn-default', id: 'pantry-link' %>
         <%= link_to 'Create A Recipe', new_recipe_path , class: 'btn btn-lg btn-default', id: 'pantry-link' %>
       </div>
+      <hr>
+      <div class="panel">
+        <h3>Recipes You Can Make Now</h3>
+        <% current_user.ready_recipes.each do |recipe| %>
+          <div class='row'>
+          <%= link_to recipe.name, recipe, class: 'btn btn-lg btn-info recipe' %>
+          </div>
+        <% end %>       
+      </div>
     </div>
     <div class="col-md-8">
       <h1 class="text-center">This Week's Menu</h1>
@@ -18,8 +27,8 @@
           </div>
           <div class="col-md-10">
             <% current_user.menu.menu_recipes_for_date(day).each do |menu_recipe| %> 
-              <div class="btn-group-vertical" role="group">
-                <%= link_to menu_recipe.recipe.name, menu_recipe.recipe, class: 'btn btn-lg btn-info recipe' %>
+              <div class="btn-group-vertical recipe" role="group">
+                <%= link_to menu_recipe.recipe.name, menu_recipe.recipe, class: 'btn btn-lg btn-info' %>
                 <%= link_to 'remove', recipe_menu_recipe_path(menu_recipe.recipe, menu_recipe), method: :delete , class: 'btn btn-sm btn-warning'%>
               </div>
             <% end %>

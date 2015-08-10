@@ -19,4 +19,24 @@ class User < ActiveRecord::Base
     user
   end
 
+
+  def ready_recipes
+    all_recipes.select { |recipe| possible?(recipe) }
+  end
+
+  def all_recipes
+    potential = Recipe.find( pantry.ingredients.joins(:recipes).pluck(:recipe_id).uniq )
+    potential.reduce([]) { |collection, recipe| collection << recipe if (recipe.ingredients - pantry.ingredients).empty? }
+  end
+
+  def has?(recipe_ingredient)
+    pi = pantry.pantry_ingredients.find_by(ingredient_id: recipe_ingredient.ingredient_id)
+    pi.quantity > recipe_ingredient.quantity
+  end
+
+  def possible?(recipe)
+    recipe.recipe_ingredients.each do |ri|
+      return false unless self.has?(ri)
+    end
+  end
 end
