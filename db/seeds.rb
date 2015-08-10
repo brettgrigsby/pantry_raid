@@ -7,7 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-ingredients_list = {'milk' => 'ml', 'cheese' => 'oz', 'whole chicken' => 'lbs', 'white bread' => 'slices', 'butter' => 'Tbsp'}
+ingredients_list = {	'milk' => 'cup(s)', 'cheese' => 'oz', 'whole chicken' => 'lbs', 'white bread' => 'slices', 'butter' => 'Tbsp',
+			'black beans' => 'oz', 'pinto beans' => 'oz', 'kidney beans' => 'oz', 'refried beans' => 'oz', 
+			'white rice' => 'cup(s)', 'brown rice' => 'cup(s)', 'spaghetti' => 'lbs', 'fettuccini' => 'lbs',
+			'penne' => 'lbs', 'crackers' => 'oz', 'bread crumbs' => 'cup(s)', 'tomatoes' => nil, 'canned tomatoes' => 'oz',
+			'tomato sauce' => 'oz', 'salsa' => 'oz', 'green beans' => 'lbs', 'carrots' => nil, 'mushrooms' => 'oz',
+			'apples' => nil, 'oranges' => nil, 'peppers' => nil, 'onions' => nil, 'potatoes' => nil, 'garlic' => 'clove(s)',
+			'chicken broth' => 'oz', 'beef broth' => 'oz', 'canned tuna' => 'oz', 'ground beef' => 'lbs',
+			'ground turkey' => 'lbs', 'ground pork' => 'lbs', 'chicken breast' => 'lbs', 'vinegar' => 'cup(s)',
+			'olive oil' => 'Tbsp', 'vegetable oil' => 'Tbsp', 'flour' => 'cup(s)', 'sugar' => 'cup(s)'}
 
 ingredients_list.each { |name, quantity_type| Ingredient.create!(name: name, quantity_type: quantity_type) }
 

@@ -10,7 +10,7 @@
       <hr>
       <div class="panel">
         <h3>Recipes You Can Make Now</h3>
-        <% current_user.ready_recipes.each do |recipe| %>
+        <% current_user.ready_sample.each do |recipe| %>
           <div class='row'>
           <%= link_to recipe.name, recipe, class: 'btn btn-lg btn-info recipe' %>
           </div>

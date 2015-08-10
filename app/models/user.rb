@@ -19,6 +19,9 @@ class User < ActiveRecord::Base
     user
   end
 
+  def ready_sample
+    ready_recipes.shuffle.first(5)
+  end
 
   def ready_recipes
     all_recipes.select { |recipe| possible?(recipe) }
@@ -26,7 +29,9 @@ class User < ActiveRecord::Base
 
   def all_recipes
     potential = Recipe.find( pantry.ingredients.joins(:recipes).pluck(:recipe_id).uniq )
-    potential.reduce([]) { |collection, recipe| collection << recipe if (recipe.ingredients - pantry.ingredients).empty? }
+    potential.reduce([]) do |collection, recipe|
+      (recipe.ingredients - pantry.ingredients).empty? ? collection << recipe : collection
+    end
   end
 
   def has?(recipe_ingredient)
