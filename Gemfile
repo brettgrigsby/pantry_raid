@@ -18,7 +18,6 @@ gem 'omniauth-facebook'
 gem 'figaro'
 gem 'capybara'
 gem 'selenium-webdriver'
-gem 'cucumber-rails'
 gem 'poltergeist'
 gem 'launchy'
 

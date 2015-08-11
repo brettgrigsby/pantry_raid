@@ -1,7 +1,7 @@
 require 'capybara/poltergeist'
 
 class FormMonster
-  INSTACART_URL ='https://www.instacart.com'
+  INSTACART_URL ='https://www.instacart.com/'
   include Capybara::DSL
   def create_order(email, password, ingredients)
     Capybara.default_driver = :poltergeist
@@ -31,9 +31,7 @@ class FormMonster
     end
 
     ingredients.each do |ingredient|
-      visit "/store/whole-foods/search/#{ingredient.gsub(' ', '%20')}"
-      sleep(1)
-
+      visit "store/whole-foods/search/#{ingredient.gsub(' ', '%20')}"
       first('.item').click
       click_button('+ Add to Cart')
     end
