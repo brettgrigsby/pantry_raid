@@ -12,9 +12,12 @@
         <h3>Recipes You Can Make Now</h3>
         <% current_user.ready_sample.each do |recipe| %>
           <div class='row'>
-          <%= link_to recipe.name, recipe, class: 'btn btn-lg btn-info recipe' %>
+            <%= link_to recipe.name, recipe, class: 'btn btn-lg btn-info recipe' %>
           </div>
         <% end %>       
+          <div class='row'>
+            <%= link_to 'SEE ALL', possibilities_path, class: 'btn btn-lg btn-primary recipe' %>
+          </div>
       </div>
     </div>
     <div class="col-md-8">
@@ -27,9 +30,15 @@
           </div>
           <div class="col-md-10">
             <% current_user.menu.menu_recipes_for_date(day).each do |menu_recipe| %> 
-              <div class="btn-group-vertical recipe" role="group">
+              <div class="btn-group recipe">
                 <%= link_to menu_recipe.recipe.name, menu_recipe.recipe, class: 'btn btn-lg btn-info' %>
-                <%= link_to 'remove', recipe_menu_recipe_path(menu_recipe.recipe, menu_recipe), method: :delete , class: 'btn btn-sm btn-warning'%>
+                <button type="button" class="btn btn-lg btn-info dropdown-toggle" data-toggle="dropdown">
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li><%= link_to 'mark as eaten', recipe_menu_recipe_path(menu_recipe.recipe, menu_recipe), method: :delete %></li>
+                  <li><%= link_to 'remove from menu', recipe_menu_recipe_path(menu_recipe.recipe, menu_recipe), method: :delete %></li>
+                </ul>
               </div>
             <% end %>
           </div>

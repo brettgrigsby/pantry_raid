@@ -1,0 +1,18 @@
+<div class='container'>
+  <div class='row'>
+    <h1>The Things You Can Make</h1>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <% current_user.ready_recipes.each do |recipe| %>
+      <div class="col-sm-4 col-md-3 text-center">
+        <div class="panel recipe-box">
+          <h1><%= link_to recipe.name, recipe %></h1>
+          <%= link_to 'ADD TO MENU', new_recipe_menu_recipe_path(recipe), class: 'btn btn-lg btn-info' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

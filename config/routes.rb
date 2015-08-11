@@ -3,8 +3,11 @@ Rails.application.routes.draw do
 
   get '/profile', to: 'users#show'
   get '/pantry', to: 'pantries#show'
+  get '/possibilities', to: 'recipes#possibilities'
 
   resources :pantry_ingredients, except: [:index]
+
+  resources :orders, only: [:new, :create, :index]
 
   resources :recipes, only: [:show, :index, :new, :create, :edit] do
     resources :recipe_steps, only: [:new, :create]

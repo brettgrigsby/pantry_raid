@@ -36,12 +36,35 @@ class User < ActiveRecord::Base
 
   def has?(recipe_ingredient)
     pi = pantry.pantry_ingredients.find_by(ingredient_id: recipe_ingredient.ingredient_id)
-    pi.quantity > recipe_ingredient.quantity
+    pi.quantity >= recipe_ingredient.quantity
   end
 
   def possible?(recipe)
     recipe.recipe_ingredients.each do |ri|
       return false unless self.has?(ri)
     end
+  end
+
+  def order_for_this_week
+    all_ri = menu.recipes.reduce([]) { |group, recipe| group << recipe.recipe_ingredients }.flatten
+    newb = Hash.new(0)
+    total_needed = all_ri.reduce(Hash.new(0)) do |c, ri| 
+      c[ri.id] += ri.quantity
+      c
+    end
+    order = total_needed.map do |ingredient_id, quantity|
+      owned = pantry.pantry_ingredients.find_by(ingredient_id: ingredient_id)
+      if owned
+        needed = quantity - owned.quantity
+        needed > 0 ? [ingredient_id, needed] : nil
+      else
+        [ingredient_id, quantity]
+      end
+    end.compact
+    Ingredient.find(order.map(&:first)).map(&:name)
+  end
+
+  def needed_ingredients
+    menu.recipes.map(&:ingredients).flatten.uniq.map(&:name) - pantry.ingredients.map(&:name)
   end
 end
