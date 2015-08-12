@@ -2,7 +2,7 @@
   <div class="row">
     <% @days.each do |day| %>
       <div class="col-md-2 col-sm-3 col-xs-4">
-        <%= link_to({ controller: 'menu_recipes', action: 'create', meal_time: day}, method: :post) do %>
+        <%= link_to({ controller: 'menu_recipes', action: 'create', meal_time: day}, class: 'day-choice', method: :post) do %>
           <div class="panel text-center menu-day">
             <h3><%= day.strftime("%^a") %></h3>
             <h4><%= day.strftime("%d") %><h4>

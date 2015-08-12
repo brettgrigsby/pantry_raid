@@ -6,8 +6,8 @@ class PantryIngredientsController < ApplicationController
     if pantry_ingredient.save
       redirect_to pantry_path
     else
-      flash.now[:warning] = 'Item Was Not Added To Pantry'
-      render :new
+      flash[:warning] = 'Item Was Not Added To Pantry'
+      redirect_to pantry_path
     end
   end
 
