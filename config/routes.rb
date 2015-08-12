@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/pantry', to: 'pantries#show'
   get '/possibilities', to: 'recipes#possibilities'
 
-  resources :pantry_ingredients, except: [:index]
+  resources :pantry_ingredients, only: [:create]
 
   resources :orders, only: [:new, :create, :index]
 

@@ -1,10 +1,10 @@
 <div class="container">
-  <div class="row">
+  <div class="row text-center">
     <%= form_for [@recipe, @recipe_step] do |f| %>
-      <%= f.label :body %>
-      <%= f.text_field :body %>
+      <h1><%= f.label :body , 'Explain This Step' %></h1>
+      <%= f.text_area :body, class: 'big-text-field' %><br>
 
-      <%= f.submit 'Add This Step' %>
+      <%= f.submit 'Add This Step' , class: 'btn btn-lg btn-primary recipe' %>
     <% end %>
 
     <%= link_to 'ALL DONE', @recipe, class: 'btn btn-lg btn-default' %>
@@ -12,14 +12,16 @@
 
   <hr>
 
-  <div class="row">
-    <% @recipe.recipe_steps.each do |rs| %>
-      <div class="col-xs-12">
-        <div class="panel">
-          <h1><%= rs.step_number %>.</h1>
+  <% @recipe.recipe_steps.each do |rs| %>
+    <div class="row">
+      <div class="col-xs-1">
+        <h1><%= rs.step_number %>.</h1>
+      </div>
+      <div class="col-xs-11">
+        <div class="panel recipe-step">
           <h4><%= rs.body %></h4>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>

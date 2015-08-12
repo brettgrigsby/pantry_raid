@@ -1,10 +1,24 @@
-<%= form_tag('/orders') do %>
-  <%= label_tag 'email', 'Instacart Email' %>
-  <%= text_field_tag 'email' %>
+<div class='container'>
+  <div class='row text-center'>
+    <h1>Please Enter Your Instacart Credentials</h1>
+    <%= form_tag('/orders') do %>
 
-  <%= label_tag 'password', 'Instacart Password' %>
-  <%= password_field_tag 'password' %>
+      <h3><%= label_tag 'email', 'Instacart Email' %></h3>
+      <%= text_field_tag 'email' %>
 
-  <%= submit_tag 'Create Order' %>
+      <h3><%= label_tag 'password', 'Instacart Password' %></h3>
+      <%= password_field_tag 'password' %>
 
-<% end %>
+      <br>
+
+      <%= submit_tag 'Create Order', class: 'btn btn-lg btn-primary recipe' %>
+    <% end %>
+  </div>
+
+  <hr>
+
+  <div class="row text-center">
+    <h1>Don't Have an Instacart Account?</h1>
+    <%= link_to 'Get One!', 'https://www.instacart.com', target: '_blank', class: 'btn btn-lg btn-primary recipe' %>
+  </div>
+</div>

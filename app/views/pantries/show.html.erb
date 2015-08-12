@@ -7,17 +7,19 @@
   <hr>
 
   <div class='row'>
-    <div class='text-align-center col-xs-12'>
     <%= form_for @pantry_ingredient do |f| %>
-      <%= f.label :ingredient_id, 'Ingredient To Add' %>
-      <%= f.collection_select :ingredient_id, Ingredient.order(:name), :id, :form_text, include_blank: true %>
+      <div class='col-xs-6 col-md-4 text-center'>
+        <h1><%= f.label :ingredient_id, 'Add An Ingredient' %>
+        <%= f.collection_select :ingredient_id, Ingredient.order(:name), :id, :form_text, include_blank: true %></h1>
+      </div>
 
-      <%= f.label :quantity %>
-      <%= f.text_field :quantity %>
+      <div class='col-xs-6 col-md-4 text-center'>
+        <h1><%= f.label :quantity %></h1>
+        <%= f.text_field :quantity %><br>
 
-      <%= f.submit 'Add To Pantry' %>
+        <%= f.submit 'Add To Pantry' , class: 'btn btn-primary recipe'%>
+      </div>
     <% end %>
-    </div>
   </div>
   <hr>
 
@@ -25,7 +27,7 @@
     <div class='col-md-12'>
       <% current_user.pantry.pantry_ingredients.each do |pi| %>
         <div class='col-xs-4 col-sm-2'>
-          <div class='pantry-ingerdient panel text-center'>
+          <div class='pantry-ingredient panel text-center'>
             <h3><%= pi.ingredient.name %></h3>
             <h4><%= pi.quantity %> <%= pi.ingredient.quantity_type %></h4>
           </div>

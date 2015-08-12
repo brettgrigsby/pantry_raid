@@ -1,9 +1,13 @@
-<%= form_for @recipe do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<div class="container">
+  <div class="row text-center">
+    <%= form_for @recipe do |f| %>
+      <h1><%= f.label :name %></h1>
+      <%= f.text_field :name %><br>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+      <h1><%= f.label :description %></h1>
+      <%= f.text_area :description , class: 'big-text-field' %><br>
 
-  <%= f.submit 'Choose Ingredients' %>
-<% end %>
+      <%= f.submit 'Choose Ingredients', class: 'btn btn-lg btn-primary recipe' %>
+    <% end %>
+  </div>
+</div>

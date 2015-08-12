@@ -32,6 +32,7 @@ class FormMonster
 
     ingredients.each do |ingredient|
       visit "store/whole-foods/search/#{ingredient.gsub(' ', '%20')}"
+      sleep(1)
       first('.item').click
       click_button('+ Add to Cart')
     end

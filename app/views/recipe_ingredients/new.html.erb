@@ -1,18 +1,22 @@
 <div class="container">
   <div class="row">
-<%= form_for [@recipe, @recipe_ingredient] do |f| %>
-  <%= f.collection_select :ingredient_id, Ingredient.order(:name), :id, :form_text, include_blank: true %>
+<div class="container">
+  <div class='row text-center'>
+    <%= form_for [@recipe, @recipe_ingredient] do |f| %>
+      <h1><%= f.label :ingerdient_id, 'Choose Ingredient' %></h1>
+      <%= f.collection_select :ingredient_id, Ingredient.order(:name), :id, :form_text, include_blank: true %><br>
 
-  <%= f.label :quantity %>
-  <%= f.text_field :quantity %>
+      <h1><%= f.label :quantity %></h1>
+      <%= f.text_field :quantity %><br>
 
-  <%= f.label :prep_method %>
-  <%= f.text_field :prep_method %>
+      <h1><%= f.label :prep_method %></h1>
+      <%= f.text_field :prep_method %><br>
 
-  <%= f.submit 'Add This Ingredient' %>
-<% end %>
+      <%= f.submit 'Add This Ingredient', class: 'btn btn-lg btn-primary recipe' %>
+    <% end %>
 
-<%= link_to 'DONE ADDING INGREDIENTS', new_recipe_recipe_step_path(@recipe), class: 'btn btn-lg btn-default' %>
+    <%= link_to 'DONE ADDING INGREDIENTS', new_recipe_recipe_step_path(@recipe), class: 'btn btn-lg btn-warning recipe' %>
+
   </div>
 
   <hr>
@@ -29,3 +33,4 @@
     <% end %>
   </div>
 </div>
+
