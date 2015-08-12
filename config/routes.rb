@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get '/profile', to: 'users#show'
   get '/pantry', to: 'pantries#show'
+  put '/pantry', to: 'pantries#update'
+
   get '/possibilities', to: 'recipes#possibilities'
 
   resources :pantry_ingredients, only: [:create]

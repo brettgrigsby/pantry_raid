@@ -12,6 +12,7 @@ class RecipeIngredientsController < ApplicationController
     if recipe_ingredient.save
       redirect_to new_recipe_recipe_ingredient_path @recipe
     else
+      falsh.now[:warning] = 'Ingredient Was Not Added To Recipe'
       render :new
     end
   end

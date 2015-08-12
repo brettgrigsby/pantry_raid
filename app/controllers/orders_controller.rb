@@ -1,7 +1,10 @@
 class OrdersController < ApplicationController
 
   def new
-    
+    if current_user.needed_ingredients.empty?
+      flash[:notice] = 'You Have All The Groceries You Need'
+      redirect_to profile_path
+    end
   end
 
   def create

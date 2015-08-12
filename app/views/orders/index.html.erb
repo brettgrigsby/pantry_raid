@@ -13,10 +13,10 @@
 
   <div class="row text-center">
     <div class="col-xs-6">
-      <%= link_to "I Completed The Instacart Order", "new_pantry_ingredient_path", class: "btn btn-lg btn-success" %>
+      <%= link_to "I Completed The Instacart Order", pantry_path, method: :put, class: "btn btn-lg btn-success" %>
     </div>
     <div class="col-xs-6">
-      <%= link_to "I Bailed On Instacart", "profile_path", class: "btn btn-lg btn-danger" %>
+      <%= link_to "I Bailed On Instacart", profile_path, class: "btn btn-lg btn-danger" %>
     </div>
   </div>
 </div>

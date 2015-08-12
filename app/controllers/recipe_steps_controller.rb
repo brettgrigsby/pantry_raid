@@ -13,6 +13,7 @@ class RecipeStepsController < ApplicationController
     if recipe_step.save
       redirect_to new_recipe_recipe_step_path @recipe
     else
+      flash[:warning] = 'The Last Step Was Not Added To Recipe'
       render :new
     end
   end

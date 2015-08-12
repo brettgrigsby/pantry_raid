@@ -11,6 +11,10 @@
 
 <%= render "shared/navbar" %>
 
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :class => "panel text-center flash-#{name}" %>
+<% end %>
+
 <%= yield %>
 
 </body>

@@ -17,6 +17,7 @@ class RecipesController < ApplicationController
     if recipe.save
       redirect_to new_recipe_recipe_ingredient_path recipe
     else
+      flash[:warning] = 'Recipe Was Not Created'
       render :new
     end
   end

@@ -1,15 +1,12 @@
 class PantryIngredientsController < ApplicationController
 
-  def new
-    @pantry_ingredient = PantryIngredient.new
-  end
-
   def create
     pantry_ingredient = PantryIngredient.new(pantry_ingredient_params)
     pantry_ingredient.pantry = pantry
     if pantry_ingredient.save
       redirect_to pantry_path
     else
+      flash.now[:warning] = 'Item Was Not Added To Pantry'
       render :new
     end
   end

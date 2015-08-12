@@ -18,7 +18,7 @@ class FormMonster
 
     Capybara.app_host = INSTACART_URL
 
-    visit INSTACART_URL if current_url != INSTACART_URL
+    visit INSTACART_URL 
 
     if current_url == INSTACART_URL
       click_link('Sign in')
