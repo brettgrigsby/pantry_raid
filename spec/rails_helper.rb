@@ -23,7 +23,7 @@ def stub_omniauth_user
       provider: 'facebook',
       uid: '123456',
       info: {
-        nickname: 'Grumby'
+        name: 'Brett Grigsby'
       },
       credentials: {
         token: '1111'
@@ -37,7 +37,7 @@ def stub_omniauth_new_user
       provider: 'facebook',
       uid: '9999',
       info: {
-        nickname: 'Grumby'
+        name: 'Brett Grigsby'
       },
       credentials: {
         token: '1111'

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  validates :uid, presence: true
 
   has_many :recipes
   has_one :menu
@@ -10,12 +11,8 @@ class User < ActiveRecord::Base
     user.image_url = oauth.info.image
     user.token     = oauth.credentials.token
     user.save
-    unless user.menu
-      Menu.create(user_id: user.id)
-    end
-    unless user.pantry
-      Pantry.create(user_id: user.id)
-    end
+    Menu.create(user_id: user.id) unless user.menu
+    Pantry.create(user_id: user.id) unless user.pantry
     user
   end
 
