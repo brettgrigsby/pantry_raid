@@ -21,7 +21,7 @@ describe 'user', type: :feature do
     click_on "Login"
   end
 
-  it 'can add ingredients to the pantry' do
+  it 'can add recipes to their menu' do
     click_link('Add To Your Menu')
 
     expect(current_path).to eq(recipes_path)
@@ -42,6 +42,33 @@ describe 'user', type: :feature do
     expect(menu.recipes.empty?).to eq(true) 
   end
 
+  it 'can see a list of groceries needed for their menu' do
+        click_link('Add To Your Menu')
+
+    expect(current_path).to eq(recipes_path)
+
+    expect(page).to have_css('.recipe-box')
+
+    click_link('ADD TO MENU')
+
+    expect(page).to have_css('.menu-day')
+    first('.day-choice').click
+
+    expect(current_path).to eq(profile_path)
+    expect(menu.recipes.first.name).to eq('hot beans')
+
+    click_link 'My Shopping List'
+
+    expect(current_path).to eq(order_path)
+    expect(page).to have_content('beans')
+
+    click_link 'I Bought These'
+
+    expect(current_path).to eq(profile_path)
+
+    click_link 'My Shopping List'
+    expect(page).to have_content('You Have All The Groceries You Need')
+  end
 end
 
 

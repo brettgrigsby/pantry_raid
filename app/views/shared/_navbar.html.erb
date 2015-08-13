@@ -12,8 +12,8 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Recipes", recipes_path %></li>
         <% if current_user %>
+          <li><%= link_to "Recipes", recipes_path %></li>
           <li><%= link_to "Profile", profile_path %></li>
           <li><%= link_to "Logout", logout_path, method: :delete %></li>
         <% else %>
