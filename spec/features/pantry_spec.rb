@@ -14,15 +14,15 @@ describe 'pantry', type: :feature do
   it 'can add ingredients to itself with the ingredient id' do
     expect(pantry.ingredients.size).to eq(0)
 
-    pantry.add_ingredient(ingredient.id)
+    pantry.add_ingredient(ingredient.id, 20)
 
     expect(pantry.pantry_ingredients.size).to eq(1)
     expect(pantry.pantry_ingredients.first.ingredient_id).to eq(ingredient.id)
     expect(pantry.pantry_ingredients.first.quantity).to eq(20)
 
-    pantry.add_ingredient(ingredient.id)
+    pantry.add_ingredient(ingredient.id, 10)
 
-    expect(pantry.pantry_ingredients.first.quantity).to eq(40)
+    expect(pantry.pantry_ingredients.first.quantity).to eq(30)
   end
 end
 

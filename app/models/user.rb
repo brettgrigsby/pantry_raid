@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   end
 
   def ready_sample
-    ready_recipes.shuffle.first(5)
+    ready_recipes.shuffle.first(3)
   end
 
   def ready_recipes

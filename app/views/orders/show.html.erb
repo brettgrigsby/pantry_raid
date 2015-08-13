@@ -1,0 +1,20 @@
+<div class='container text-center'>
+  <div class='row'>
+    <h1>Shopping List<h1>
+  </div>
+
+  <hr>
+
+  <div class="btn-group-vertical" id="the-list" data-toggle="buttons">
+    <% @ingredient_names.each do |ingredient_name| %>
+      <label class="btn btn-primary shopping-checklist">
+	<input type="checkbox" autocomplete="off" checked>
+	  <span class="glyphicon glyphicon-ok"></span> <%= ingredient_name %>
+	</label>
+    <% end %>
+    <%= link_to 'I Bought These', pantry_path, method: :put, class: 'btn btn-lg btn-success shopping-checklist' %>
+  </div>
+
+  <div class='row'>
+  </div>
+</div>

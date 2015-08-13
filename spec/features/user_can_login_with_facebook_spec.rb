@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'user can log in', type: :feature do
+describe 'user', type: :feature do
   include Capybara::DSL
 
   let(:user) { User.create(uid: '123456', name: 'Grumby', token: '1111') }
@@ -11,12 +11,18 @@ describe 'user can log in', type: :feature do
     user
   end
 
-  it 'user can login using facebook' do
+  it 'can log in and out using facebook' do
     visit root_path
+
     assert_equal 200, page.status_code
+
     click_on "Login"
+
     assert_equal '/profile', current_path
     assert page.has_content?("This Week's Menu")
-  end
 
+    click_on "Logout"
+
+    expect(current_path).to eq(root_path)   
+  end
 end

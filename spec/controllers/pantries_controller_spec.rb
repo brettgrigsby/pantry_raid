@@ -14,9 +14,4 @@ RSpec.describe PantriesController, type: :controller do
       expect(response.status).to eq(200)
     end
   end
-
-  context '#update' do
-    it 
-  end
-
 end

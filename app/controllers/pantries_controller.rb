@@ -6,7 +6,7 @@ class PantriesController < ApplicationController
   def update
     current_user.needed_ingredients.each do |ingredient_name|
       ingredient_id = Ingredient.find_by(name: ingredient_name).id
-      pantry.add_ingredient(ingredient_id)
+      pantry.add_ingredient(ingredient_id, 10)
     end
     flash[:notice] = 'Your Pantry Has Been Updated'
     redirect_to profile_path

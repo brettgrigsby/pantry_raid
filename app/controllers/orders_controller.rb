@@ -15,4 +15,12 @@ class OrdersController < ApplicationController
 
   def index
   end
+
+  def show
+    @ingredient_names = current_user.needed_ingredients
+    if @ingredient_names.empty?
+      flash[:notice] = 'You Have All The Groceries You Need'
+      redirect_to profile_path
+    end
+  end
 end
